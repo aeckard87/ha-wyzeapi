@@ -2,6 +2,8 @@ import requests
 import json
 import threading
 from queue import Queue
+import logging
+_LOGGER = logging.getLogger(__name__)
 
 from .wyzeapi_exceptions import *
 
@@ -73,8 +75,12 @@ class RequestManager():
 		response = Queue()
 		request._response = response
 		self._request_queue.put(request)
+		_LOGGER.debug("Turning blocking request: ")
+		_LOGGER.debug("    Payload: " + payload)
 		return response.get()
 
 	def do_request(self, url, payload):
 		request = WyzeRequest(url, payload)
 		self._request_queue.put(request)
+		_LOGGER.debug("Turning blocking request: ")
+		_LOGGER.debug("    Payload: " + payload)

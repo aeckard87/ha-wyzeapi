@@ -27,6 +27,8 @@ class WyzeSwitch():
 			'pid': 'P3',
 			'app_ver': 'com.hualai.WyzeCam___2.6.62'
 		}
+		_LOGGER.debug("Turning On: ")
+		_LOGGER.debug("    Payload: " + payload)
 
 		self._api._request_man.do_request(url, payload)
 
@@ -50,6 +52,8 @@ class WyzeSwitch():
 			'pid': 'P3',
 			'app_ver': 'com.hualai.WyzeCam___2.6.62'
 		}
+		_LOGGER.debug("Turning Off: ")
+		_LOGGER.debug("    Payload: " + payload)
 
 		self._api._request_man.do_request(url, payload)
 
@@ -79,6 +83,8 @@ class WyzeSwitch():
 				"ts":"1575955054511",
 				"access_token": self._access_token
 			}
+            _LOGGER.debug("Turning Update: ")
+            _LOGGER.debug("    Payload: " + payload)
 
 			data = self._api._request_man.do_blocking_request(url, payload)
 
