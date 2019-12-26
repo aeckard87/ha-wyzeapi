@@ -49,7 +49,7 @@ class WyzeApi():
 		}
 
 		data = self._request_man.do_blocking_request(url, payload)
-		_LOGGER.debug("Login:)
+		_LOGGER.debug("Login:")
 		_LOGGER.debug("    Payload: " + payload)
 		_LOGGER.debug("    URL: " + url)
 
@@ -83,7 +83,7 @@ class WyzeApi():
 
 			data = self._request_man.do_blocking_request(url, payload)
 			self._all_devices = data['data']['device_list']
-		_LOGGER.debug("Get Devices:)
+		_LOGGER.debug("Get Devices:")
 		_LOGGER.debug("    Payload: " + payload)
 		_LOGGER.debug("    URL: " + url)
 
