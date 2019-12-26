@@ -49,9 +49,6 @@ class WyzeApi():
 		}
 
 		data = self._request_man.do_blocking_request(url, payload)
-		_LOGGER.debug("Login:")
-		_LOGGER.debug("    Payload: " + payload)
-		_LOGGER.debug("    URL: " + url)
 
 		try:
 			access_token = data['data']['access_token']
@@ -83,9 +80,6 @@ class WyzeApi():
 
 			data = self._request_man.do_blocking_request(url, payload)
 			self._all_devices = data['data']['device_list']
-		_LOGGER.debug("Get Devices:")
-		_LOGGER.debug("    Payload: " + payload)
-		_LOGGER.debug("    URL: " + url)
 
 		return self._all_devices
 
