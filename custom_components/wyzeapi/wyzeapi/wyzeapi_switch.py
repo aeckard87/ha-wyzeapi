@@ -83,7 +83,7 @@ class WyzeSwitch():
 				"access_token": self._access_token
 			}
 
-		_LOGGER.debug("Update Payload: " + payload)
+            _LOGGER.debug("Update Payload: " + payload)
 			data = self._api._request_man.do_blocking_request(url, payload)
 
 			for item in data['data']['property_list']:
