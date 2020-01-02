@@ -5,7 +5,7 @@ from queue import Queue
 import logging
 _LOGGER = logging.getLogger(__name__)
 
-from .wyzeapi_exceptions import *
+from .wyzeapi_exceptions import WyzeApiError
 
 import logging
 _LOGGER = logging.getLogger(__name__)
@@ -41,7 +41,7 @@ class RequestManager():
 
 			self._lock.acquire()
 			if self._in_error_state:
-				_LOGGER.error(self._error_msg)
+				_LOGGER.warning(self._error_msg)
 				self._api._access_token = None
 				self._api.initialize()
 			self._lock.release()
@@ -77,6 +77,13 @@ class RequestManager():
 		self._request_queue.put(request)
 		_LOGGER.debug("Turning blocking request: ")
 		_LOGGER.debug("    Payload: " + payload)
+		return response.get()
+
+	def do_single_threaded_request(self, url, payload):
+		request = WyzeRequest(url, payload)
+		response = Queue()
+		request._response = response
+		self.request_worker(request)
 		return response.get()
 
 	def do_request(self, url, payload):

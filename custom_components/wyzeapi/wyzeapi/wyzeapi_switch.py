@@ -72,7 +72,7 @@ class WyzeSwitch():
 			payload = {
 				"target_pid_list":[],
 				"phone_id": self._api._device_id,
-				"device_model": self._api._device_model,
+				"device_model": self._device_model,
 				"app_name":"com.hualai.WyzeCam",
 				"app_version":"2.6.62",
 				"sc":"01dd431d098546f9baf5233724fa2ee2",
@@ -81,7 +81,7 @@ class WyzeSwitch():
 				"app_ver":"com.hualai.WyzeCam___2.6.62",
 				"phone_system_type":"1",
 				"ts":"1575955054511",
-				"access_token": self._access_token
+				"access_token": self._api._access_token
 			}
             _LOGGER.debug("Turning Update: ")
             _LOGGER.debug("    Payload: " + payload)
